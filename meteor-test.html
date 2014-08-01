@@ -1,18 +1,49 @@
 <head>
-  <title>Meteor Test</title>
+  <title>RefactorU Chat</title>
 </head>
-
 <body>
-	{{> entry}}
 
-	{{> messages}}
+	<nav class="navbar navbar-default" role="navigation">
+		  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">RefactorU Chat</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+
+		    <div class="container">
+		    	<div class="row">
+		    		<div class="col-sm-2 col-sm-offset-4 col-md-offset-6 col-lg-offset-7">
+		    		{{> loginButtons}}
+		    		</div>
+		    	</div>
+		    </div>
+		  </div><!-- /.container -->
+	</nav>
+
+	<div class="container content">
+		<div class="row">
+			<div class="chat-container col-lg-8 col-lg-offset-2">
+				{{#if currentUser}}
+				  {{> entry}}
+				{{/if}}
+				<div class="messages">				
+					{{> messages}}
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 <template name="entry">
-	<p>
-		<input type="text" id="name" placeholder="Your Name">
-		<input type="text" id="messageBox" placeholder="Your Message">
-	</p>
+	<form>
+	    <div class="form-group">
+			<!-- <input type="text" class="form-control" id="name" value="Your Name"> -->
+			<input type="text" class="form-control" id="messageBox" placeholder="Enter a message...">
+	    </div>
+	</form>
 </template>
 
 <template name="messages">
@@ -22,5 +53,7 @@
 </template>
 
 <template name="message">
-	<p><strong>{{name}}:</strong> {{message}}</p>
+	<div>
+		<p><strong>{{name}}:</strong> {{message}}</p>
+	</div>
 </template>

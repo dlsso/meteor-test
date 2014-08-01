@@ -2,6 +2,9 @@ Messages = new Meteor.Collection('messages')
 
 if (Meteor.isClient) {
 
+  Accounts.ui.config({
+     passwordSignupFields: 'USERNAME_AND_EMAIL'
+  });
   ////////// Helpers for in-place editing //////////
   
   // Returns an event_map key for attaching "ok/cancel" events to
@@ -35,12 +38,12 @@ if (Meteor.isClient) {
 
   Template.entry.events[okcancel_events('#messageBox')] = make_okcancel_handler({
     ok: function (text, event) {
-      var nameEntry = document.getElementById('name')
-      if(nameEntry.value !== ""){
+      // var nameEntry = document.getElementById('name')
+      // if(nameEntry.value !== ""){
         var timeStamp = Date.now() / 1000
-        Messages.insert({name: nameEntry.value, message: text, time: timeStamp})
+        Messages.insert({name: Meteor.user().username, message: text, time: timeStamp})
         event.target.value = ""
-      }
+      // }
     }
   })
 
