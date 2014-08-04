@@ -28,8 +28,10 @@ if (Meteor.isClient) {
         var value = String(evt.target.value || "");
         if (value)
           ok.call(this, value, evt);
-        else
+        else {
+          evt.preventDefault()
           cancel.call(this, evt);
+        }
       }
     };
   };
