@@ -42,6 +42,7 @@ li{
 .messages{
 	max-height: 88%;
 	overflow: auto;
+	word-break: break-all;
 }
 
 /*meteor deploy meteorapp.meteor.com*/
